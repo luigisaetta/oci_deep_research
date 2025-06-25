@@ -57,6 +57,7 @@ if start_button and user_input.strip():
                 async with client.stream(
                     "POST", AGENT_API_URL, json=payload
                 ) as response:
+                    # process the streaming response
                     async for line in response.aiter_lines():
                         if line.strip():
                             try:
@@ -84,7 +85,7 @@ if start_button and user_input.strip():
                                     # Node: search_node, generate_node
                                     if key in ["search_node", "generate_node"]:
                                         try:
-                                            # add the title of the document sectionj
+                                            # add the title of the document section
                                             step_name += (
                                                 ", "
                                                 + value["sections"][
