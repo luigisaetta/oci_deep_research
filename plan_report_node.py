@@ -28,6 +28,8 @@ class PlanReportNode(Runnable):
         """
         Create a plan for the report
         """
+        logger.info("Planning report...")
+
         subject = state["subject"]
         report_length = state["report_length"]
 
@@ -43,8 +45,6 @@ class PlanReportNode(Runnable):
             input_variables=["subject", "min_sections", "max_sections"],
             template=PROMPT_TEMPLATE_PLAN,
         ).format(subject=subject, min_sections=min_sections, max_sections=max_sections)
-
-        logger.info("Planning report...")
 
         # here we use the default model
         llm = get_chat_model()

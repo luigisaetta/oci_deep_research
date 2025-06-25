@@ -52,7 +52,7 @@ if start_button and user_input.strip():
             Invoke in streaming mode
             """
             payload = {"user_input": _user_input}
-            
+
             async with httpx.AsyncClient(timeout=None) as client:
                 async with client.stream(
                     "POST", AGENT_API_URL, json=payload

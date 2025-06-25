@@ -25,9 +25,9 @@ class ReviewReportNode(Runnable):
         """
         Review the entire content
         """
-        full_report = state["full_report"]
-
         logger.info("Reviewing report...")
+
+        full_report = state["full_report"]
 
         prompt_review = PromptTemplate(
             input_variables=["full_report"],

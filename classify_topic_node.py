@@ -25,14 +25,14 @@ class ClassifyTopicNode(Runnable):
         """
         Node to classify the topic
         """
+        logger.info("Classifying topic...")
+
         subject = state["subject"]
 
         # templates are in prompts.py
         prompt_topic = PromptTemplate(
             input_variables=["subject"], template=PROMPT_TEMPLATE_TOPIC
         ).format(subject=subject)
-
-        logger.info("Classifying topic...")
 
         # here we use the default model
         llm = get_chat_model()
