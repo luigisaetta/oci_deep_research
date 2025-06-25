@@ -16,7 +16,7 @@ from model_factory import get_chat_model
 from utils import get_console_logger, extract_json_from_text
 from config import DEBUG, DEFAULT_MAX_SECTIONS, DEFAULT_MIN_SECTIONS
 
-logger = get_console_logger()
+logger = get_console_logger(name="PlanReportNode")
 
 
 class PlanReportNode(Runnable):

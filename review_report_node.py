@@ -13,7 +13,7 @@ from model_factory import get_chat_model
 from utils import get_console_logger
 from config import FINAL_REPORT_MAX_TOKENS
 
-logger = get_console_logger()
+logger = get_console_logger(name="ReviewReportNode")
 
 
 class ReviewReportNode(Runnable):

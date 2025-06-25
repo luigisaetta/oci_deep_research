@@ -13,7 +13,7 @@ from model_factory import get_chat_model
 from utils import get_console_logger, extract_json_from_text
 from config import DEBUG
 
-logger = get_console_logger()
+logger = get_console_logger(name="ClassifyTopicNode")
 
 
 class ClassifyTopicNode(Runnable):

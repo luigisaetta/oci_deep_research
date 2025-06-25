@@ -43,9 +43,9 @@ def generate_request_id():
 
 async def stream_graph_updates(user_input: str, config=None):
     """
-    Stream the updates from the travel agent graph.
+    Stream the updates from the deep research agent graph.
     Args:
-        user_input (str): User input for the travel agent.
+        user_input (str): User input for the agent.
     Yields:
         str: JSON string of the step output.
     """

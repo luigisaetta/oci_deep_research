@@ -12,7 +12,7 @@ from prompts import PROMPT_TEMPLATE_GENERATE
 from model_factory import get_chat_model
 from utils import get_console_logger
 
-logger = get_console_logger()
+logger = get_console_logger(name="GenerateSectionNode")
 
 
 class GenerateSectionNode(Runnable):

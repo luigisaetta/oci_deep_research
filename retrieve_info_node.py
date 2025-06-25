@@ -13,7 +13,7 @@ from model_factory import get_chat_model
 from utils import get_console_logger
 from config import DEBUG, SEARCH_INFO_MODEL_ID
 
-logger = get_console_logger()
+logger = get_console_logger(name="RetrieveInfoNode")
 
 
 class RetrieveInfoNode(Runnable):
