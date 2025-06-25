@@ -49,15 +49,20 @@ class PlanReportNode(Runnable):
         # here we use the default model
         llm = get_chat_model()
 
-        response = llm.invoke([HumanMessage(content=prompt_plan)])
-
-        if DEBUG:
-            logger.info("PlanReportNode: LLM output %s", response.content)
-
         try:
+            response = llm.invoke([HumanMessage(content=prompt_plan)])
+
+            if DEBUG:
+                logger.info("PlanReportNode: LLM output %s", response.content)
+
             parsed = extract_json_from_text(response.content)
+        except ValueError as e:
+            logger.error("PlanReportNode: error extracting JSON from LLM response!")
+            raise ValueError(
+                "PlanReportNode: failed to extract JSON from LLM response"
+            ) from e
         except Exception as e:
-            logger.error("PlanReportNode: invalid JSON!")
+            logger.error("PlanReportNode: generic error %s", e)
             raise ValueError from e
 
         return {

@@ -1,5 +1,5 @@
 """
-Classify the topi, for reporting purpouse
+Classify the topic, for reporting purpouse
 
 Author: L. Saetta
 """
@@ -37,19 +37,24 @@ class ClassifyTopicNode(Runnable):
         # here we use the default model
         llm = get_chat_model()
 
-        response = llm.invoke([HumanMessage(content=prompt_topic)])
-
-        if DEBUG:
-            logger.info("ClassifyTopicNode: LLM output %s", response.content)
-
         try:
+            response = llm.invoke([HumanMessage(content=prompt_topic)])
+
+            if DEBUG:
+                logger.info("ClassifyTopicNode: LLM output %s", response.content)
+
             json_result = extract_json_from_text(response.content)
 
             logger.info("Topic classified as: %s", json_result["topic"])
             logger.info("Report length classified as: %s", json_result["report_length"])
 
+        except ValueError as e:
+            logger.error("ClassifyTopicNode: error extracting JSON from LLM response!")
+            raise ValueError(
+                "ClassifyTopicNode: failed to extract JSON from LLM response"
+            ) from e
         except Exception as e:
-            logger.error("ClassifyTopicNode: invalid JSON!")
+            logger.error("ClassifyTopicNode: generic error %s", e)
             raise ValueError from e
 
         return {

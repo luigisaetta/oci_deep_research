@@ -45,9 +45,13 @@ class RetrieveInfoNode(Runnable):
         if DEBUG:
             logger.info("Retrieving info for: %s", prompt_search)
 
-        info = llm.invoke([HumanMessage(content=prompt_search)])
+        try:
+            info = llm.invoke([HumanMessage(content=prompt_search)])
 
-        if DEBUG:
-            logger.info("Info retrieved: %s", info.content)
+            if DEBUG:
+                logger.info("Info retrieved: %s", info.content)
+        except Exception as e:
+            logger.error("RetrieveInfoNode: error retrieving info: %s", e)
+            raise ValueError("RetrieveInfoNode: failed to retrieve info") from e
 
         return {**state, "retrieved_info": info.content}

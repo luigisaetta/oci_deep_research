@@ -36,9 +36,15 @@ class GenerateSectionNode(Runnable):
 
         llm = get_chat_model()
 
-        draft = llm.invoke([HumanMessage(content=prompt_generate)])
+        try:
+            section_draft = llm.invoke([HumanMessage(content=prompt_generate)])
+        except Exception as e:
+            logger.error("GenerateSectionNode: error generating section content: %s", e)
+            raise ValueError(
+                "GenerateSectionNode: failed to generate section content"
+            ) from e
 
-        state["section_drafts"].append(draft.content)
+        state["section_drafts"].append(section_draft.content)
 
         # switch to next section
         state["current_section"] += 1

@@ -34,6 +34,9 @@ logger = get_console_logger("agent_fastapi_logger", level="INFO")
 def generate_request_id():
     """
     Generate a unique request id
+
+    Returns:
+        str: A unique identifier for the request.
     """
     return str(uuid.uuid4())
 
@@ -72,6 +75,11 @@ async def invoke(request: InvokeRequest):
     if DEBUG:
         logger.info("Invoked Agent API with config: %s", _config)
 
-    return StreamingResponse(
-        stream_graph_updates(request.user_input, _config), media_type=MEDIA_TYPE
-    )
+    try:
+        # added to make it more reliable
+        response = stream_graph_updates(request.user_input, _config)
+    except Exception as e:
+        logger.error("Error in invoke endpoint: %s", e)
+        response = json.dumps({"error": str(e)})
+
+    return StreamingResponse(response, media_type=MEDIA_TYPE)

@@ -37,7 +37,11 @@ class ReviewReportNode(Runnable):
         # max_tokens increased for the final report
         llm = get_chat_model(max_tokens=FINAL_REPORT_MAX_TOKENS)
 
-        reviewed = llm.invoke([HumanMessage(content=prompt_review)])
+        try:
+            reviewed = llm.invoke([HumanMessage(content=prompt_review)])
+        except Exception as e:
+            logger.error("ReviewReportNode: error reviewing report: %s", e)
+            raise ValueError("ReviewReportNode: failed to review report") from e
 
         state["reviewed_report"] = reviewed.content
 
