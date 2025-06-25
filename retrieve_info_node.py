@@ -1,5 +1,7 @@
 """
 Retrieve Info Node
+
+Author: L. Saetta
 """
 
 from langchain.prompts import PromptTemplate

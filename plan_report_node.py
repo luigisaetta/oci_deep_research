@@ -3,6 +3,8 @@ Plan Report Node
 
 In this file is defined the node to create a plan for the report.
 A plan means a detailed outline of the report, including the title and sections.
+
+Author: L. Saetta
 """
 
 from langchain.prompts import PromptTemplate

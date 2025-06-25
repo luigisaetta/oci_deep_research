@@ -1,5 +1,7 @@
 """
 Test Agent
+
+Author: L. Saetta
 """
 
 from report_state import ReportState

@@ -6,6 +6,7 @@ It is designed to be used in the context of an application that interacts with O
 Infrastructure (OCI) Generative AI services.
 
 This version has been adapted to work with new models (xAI and OpenAI)
+
 Author: L. Saetta
 Date: 21/05/2025
 

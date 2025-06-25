@@ -5,6 +5,8 @@ and prints the response.
 
 It also prints the name of the completed steps.
 Some steps are repeated, as needed.
+
+Author: L. Saetta
 """
 
 import asyncio

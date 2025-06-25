@@ -1,5 +1,7 @@
 """
 Do a final review
+
+Author: L. Saetta
 """
 
 from langchain.prompts import PromptTemplate

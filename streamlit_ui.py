@@ -1,5 +1,7 @@
 """
 Streamlit UI
+
+Author: L. Saetta
 """
 
 import asyncio

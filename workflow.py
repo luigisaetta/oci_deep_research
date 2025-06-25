@@ -3,6 +3,8 @@ Workflow:
 Here we define the structure of the Graph.
 
 The agent is based on LangGraph and is designed to generate a research report.
+
+Author: L. Saetta
 """
 
 from langgraph.graph import StateGraph, START, END

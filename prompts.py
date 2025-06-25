@@ -2,6 +2,8 @@
 Prompts
 
 In this file are defined the prompts used in the application.
+
+Author: L. Saetta
 """
 
 # prompt to classify the request and identify the topic and report length

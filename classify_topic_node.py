@@ -1,5 +1,7 @@
 """
 Classify the topi, for reporting purpouse
+
+Author: L. Saetta
 """
 
 from langchain.prompts import PromptTemplate
@@ -47,7 +49,7 @@ class ClassifyTopicNode(Runnable):
             logger.info("Report length classified as: %s", json_result["report_length"])
 
         except Exception as e:
-            logger.error("PlanReportNode: invalid JSON!")
+            logger.error("ClassifyTopicNode: invalid JSON!")
             raise ValueError from e
 
         return {

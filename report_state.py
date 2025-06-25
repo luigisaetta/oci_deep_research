@@ -1,5 +1,7 @@
 """
 The State of the graph
+
+Author: L. Saetta
 """
 
 from typing import TypedDict, List, Dict

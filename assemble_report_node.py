@@ -1,5 +1,7 @@
 """
 Assemble Report Node
+
+Author: L. Saetta
 """
 
 from langchain_core.runnables import Runnable

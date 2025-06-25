@@ -1,5 +1,7 @@
 """
 Config
+
+Author: L. Saetta
 """
 
 DEBUG = False

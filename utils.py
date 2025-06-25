@@ -1,5 +1,7 @@
 """
 Utils
+
+Author: L. Saetta
 """
 
 import logging
