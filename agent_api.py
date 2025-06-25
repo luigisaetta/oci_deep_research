@@ -1,5 +1,7 @@
 """
 Agent API
+
+Author: L. Saetta
 """
 
 import uuid

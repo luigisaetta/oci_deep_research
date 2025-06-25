@@ -69,12 +69,16 @@ if start_button and user_input.strip():
                                 for key, value in data.items():
                                     # report the completed node
                                     step_name = key
+
+                                    #
                                     # Node: plan_node
+                                    #
                                     if key == "plan_node":
+                                        # show on the screen the plan with sections
                                         _pretty_sections = generate_pretty_sections(
                                             value["sections"]
                                         )
-                                        # compute the actual value
+                                        # after planning compute the actual value
                                         n_sections = len(_pretty_sections)
 
                                         st.sidebar.header("Report sections:")
@@ -82,7 +86,10 @@ if start_button and user_input.strip():
                                             str(_pretty_sections),
                                             expanded=False,
                                         )
+
+                                    #
                                     # Node: search_node, generate_node
+                                    #
                                     if key in ["search_node", "generate_node"]:
                                         try:
                                             # add the title of the document section
@@ -101,8 +108,9 @@ if start_button and user_input.strip():
                                             # quick fix
                                             pass
 
-                                    st.toast(f"Completed: {step_name}")
+                                    #
                                     # Node: review_node
+                                    #
                                     if key == "review_node":
                                         # the last node
                                         report_lines.append(value["reviewed_report"])
@@ -111,6 +119,9 @@ if start_button and user_input.strip():
                                         )
                                         # finished, update the progress bar
                                         progress.progress(100)
+
+                                    st.toast(f"Completed: {step_name}")
+
                             except json.JSONDecodeError:
                                 continue
 

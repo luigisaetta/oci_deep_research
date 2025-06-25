@@ -11,7 +11,7 @@ PROMPT_TEMPLATE_TOPIC = """
 Classify the topic for a research report on: {subject}.
 Use only one or a few words as topic name.
 Classify also the report length requested: can be only one of: medium, long.
-Default length is: medium.
+Default length is: medium. If the requst asks for a detailed report, classify it as long.
 
 Respond as JSON.
 Enclose the JSON in triple backtics.
