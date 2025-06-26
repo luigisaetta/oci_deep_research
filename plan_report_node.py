@@ -24,6 +24,28 @@ class PlanReportNode(Runnable):
     Node to create a plan for the report
     """
 
+    def get_num_sections(self, report_length: str) -> tuple:
+        """
+        Get the number of sections based on the report length
+
+        Args:
+            report_length (str): The length of the report, e.g., "short", "medium", "long".
+        Returns:
+            tuple: A tuple containing the minimum and maximum number of sections.
+        """
+        if report_length.lower() == "medium":
+            # min, max # of sections in the report
+            min_sections = 3
+            max_sections = 5
+        elif report_length.lower() == "short":
+            min_sections = 1
+            max_sections = 2
+        else:
+            min_sections = DEFAULT_MIN_SECTIONS
+            max_sections = DEFAULT_MAX_SECTIONS
+
+        return min_sections, max_sections
+
     def invoke(self, state: ReportState, config=None, **kwargs) -> ReportState:
         """
         Create a plan for the report
@@ -33,13 +55,7 @@ class PlanReportNode(Runnable):
         subject = state["subject"]
         report_length = state["report_length"]
 
-        if report_length.lower() == "medium":
-            # min, max # of sections in the report
-            min_sections = 3
-            max_sections = 5
-        else:
-            min_sections = DEFAULT_MIN_SECTIONS
-            max_sections = DEFAULT_MAX_SECTIONS
+        min_sections, max_sections = self.get_num_sections(report_length)
 
         prompt_plan = PromptTemplate(
             input_variables=["subject", "min_sections", "max_sections"],

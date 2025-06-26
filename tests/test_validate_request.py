@@ -13,15 +13,17 @@ def test_clear_request(node):
     
     assert output["clarification_needed"] is False
 
-def test_clear_request2(node):
+def test_not_so_clear_request(node):
     input_data = {"subject": "Explain LangGraph workflows, create a detailed report."}
     output = node.invoke(input_data)
     
-    assert output["clarification_needed"] is False
+    assert output["clarification_needed"] is True
+    assert output["clarification_request"] is not None
 
 def test_unclear_request(node):
     input_data = {"subject": "I want some information regarding LangGraph, but not sure which area"}
     output = node.invoke(input_data)
     
     assert output["clarification_needed"] is True
+    assert output["clarification_request"] is not None
 

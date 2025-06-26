@@ -11,6 +11,7 @@ AUTH_TYPE = "API_KEY"
 
 # for LLMs
 REGION = "us-chicago-1"
+# REGION = "eu-frankfurt-1"
 SERVICE_ENDPOINT = f"https://inference.generativeai.{REGION}.oci.oraclecloud.com"
 
 # this is the default model used

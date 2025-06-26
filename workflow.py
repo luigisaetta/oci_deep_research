@@ -55,6 +55,7 @@ def create_workflow():
 
     # sections of the report are not generated in parallel but sequentially
     # check if there are some more sections to work
+    # (conditional returns next_section)
     workflow.add_conditional_edges(
         "generate_node",
         all_sections_written,

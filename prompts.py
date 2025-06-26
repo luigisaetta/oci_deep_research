@@ -10,8 +10,10 @@ Author: L. Saetta
 PROMPT_TEMPLATE_TOPIC = """
 Classify the topic for a research report on: {subject}.
 Use only one or a few words as topic name.
-Classify also the report length requested: can be only one of: medium, long.
-Default length is: medium. If the requst asks for a detailed report, classify it as long.
+Classify also the report length requested: can be only one of: short, medium, long.
+Default length is: medium. 
+If the requst asks for a detailed report, classify it as long.
+If the request asks for a brief report, classify it as short.
 
 Respond as JSON.
 Enclose the JSON in triple backtics.
@@ -84,4 +86,24 @@ Example:
 ]
 }}
 ```
+"""
+
+PROMPT_TEMPLATE_VALIDATE_REQUEST = """
+You are an assistant that determines if a user request is clear enough to start structured research.
+If the request is specific and clear enough to proceed without further clarification, respond with 'yes'.
+If the request is not clear, respond with 'no'. In this case provide also a request for clarification.
+Do not add any comment or other detail.
+Respond as JSON.
+Enclose the JSON in triple backtics.
+
+Example:
+```json
+{{
+    "decision": "no",
+    "clarification_request": "Please provide more details about the specific aspects of the LangGraph."
+}}
+```
+
+User request:
+{user_input}
 """
