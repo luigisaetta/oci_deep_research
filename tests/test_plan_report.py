@@ -1,8 +1,8 @@
 # tests/test_validate_request_node.py
 
 import pytest
-from report_state import ReportState
-from plan_report_node import PlanReportNode
+from oci_deep_research.report_state import ReportState
+from oci_deep_research.plan_report_node import PlanReportNode
 
 @pytest.fixture
 def node():

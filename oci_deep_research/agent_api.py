@@ -9,10 +9,10 @@ import json
 from fastapi import FastAPI
 from fastapi.responses import StreamingResponse
 from pydantic import BaseModel
-from workflow import create_workflow
-from report_state import ReportState
-from utils import get_console_logger
-from config import DEBUG
+from .workflow import create_workflow
+from .report_state import ReportState
+from .utils import get_console_logger
+from .config import DEBUG
 
 MEDIA_TYPE = "application/json"
 

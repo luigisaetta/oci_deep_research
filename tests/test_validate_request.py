@@ -1,7 +1,7 @@
 # tests/test_validate_request_node.py
 
 import pytest
-from validate_request import ValidateRequest
+from oci_deep_research.validate_request import ValidateRequest
 
 @pytest.fixture
 def node():

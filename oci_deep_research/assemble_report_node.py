@@ -5,8 +5,8 @@ Author: L. Saetta
 """
 
 from langchain_core.runnables import Runnable
-from report_state import ReportState
-from utils import get_console_logger
+from .report_state import ReportState
+from .utils import get_console_logger
 
 logger = get_console_logger(name="AssembleReportNode")
 

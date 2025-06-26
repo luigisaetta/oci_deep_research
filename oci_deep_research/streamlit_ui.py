@@ -8,7 +8,7 @@ import asyncio
 import json
 import httpx
 import streamlit as st
-from config import AGENT_API_URL, DEFAULT_MAX_SECTIONS
+from .config import AGENT_API_URL, DEFAULT_MAX_SECTIONS
 
 
 # helper functions

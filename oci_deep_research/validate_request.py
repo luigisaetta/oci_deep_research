@@ -6,11 +6,11 @@ Author: L. Saetta
 
 from langchain_core.runnables import Runnable
 from langchain.prompts import PromptTemplate
-from report_state import ReportState
-from prompts import PROMPT_TEMPLATE_VALIDATE_REQUEST
-from model_factory import get_chat_model
-from utils import get_console_logger, extract_json_from_text
-from config import DEBUG
+from .report_state import ReportState
+from .prompts import PROMPT_TEMPLATE_VALIDATE_REQUEST
+from .model_factory import get_chat_model
+from .utils import get_console_logger, extract_json_from_text
+from .config import DEBUG
 
 logger = get_console_logger(name="ValidateRequestNode")
 

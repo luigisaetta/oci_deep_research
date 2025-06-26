@@ -1,8 +1,8 @@
 # tests/test_validate_request_node.py
 
 import pytest
-from report_state import ReportState
-from classify_topic_node import ClassifyTopicNode
+from oci_deep_research.report_state import ReportState
+from oci_deep_research.classify_topic_node import ClassifyTopicNode
 
 @pytest.fixture
 def node():

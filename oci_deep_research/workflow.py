@@ -8,13 +8,13 @@ Author: L. Saetta
 """
 
 from langgraph.graph import StateGraph, START, END
-from report_state import ReportState
-from classify_topic_node import ClassifyTopicNode
-from plan_report_node import PlanReportNode
-from retrieve_info_node import RetrieveInfoNode
-from generate_section_node import GenerateSectionNode
-from assemble_report_node import AssembleReportNode
-from review_report_node import ReviewReportNode
+from .report_state import ReportState
+from .classify_topic_node import ClassifyTopicNode
+from .plan_report_node import PlanReportNode
+from .retrieve_info_node import RetrieveInfoNode
+from .generate_section_node import GenerateSectionNode
+from .assemble_report_node import AssembleReportNode
+from .review_report_node import ReviewReportNode
 
 
 # ---- Graph Construction ----

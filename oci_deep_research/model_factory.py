@@ -13,9 +13,9 @@ Date: 21/05/2025
 """
 
 from langchain_community.chat_models import ChatOCIGenAI
-from utils import get_console_logger
-from config import MODEL_ID, SERVICE_ENDPOINT, AUTH_TYPE, DEBUG, MAX_TOKENS, TEMPERATURE
-from config_private import COMPARTMENT_OCID
+from .utils import get_console_logger
+from .config import MODEL_ID, SERVICE_ENDPOINT, AUTH_TYPE, DEBUG, MAX_TOKENS, TEMPERATURE
+from .config_private_template import COMPARTMENT_OCID
 
 MODELS_WITHOUT_KWARGS = {
     "openai.gpt-4o-search-preview",
