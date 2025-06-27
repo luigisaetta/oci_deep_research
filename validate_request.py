@@ -7,7 +7,10 @@ Author: L. Saetta
 from langchain_core.runnables import Runnable
 from langchain.prompts import PromptTemplate
 from report_state import ReportState
-from prompts import PROMPT_TEMPLATE_VALIDATE_REQUEST
+from prompts import (
+    PROMPT_TEMPLATE_VALIDATE_REQUEST,
+    PROMPT_TEMPLATE_SUMMARIZE_REQUEST,
+)
 from model_factory import get_chat_model
 from utils import (
     get_console_logger,
@@ -67,6 +70,18 @@ class ValidateRequest(Runnable):
         if json_result["decision"].lower() == "yes":
             state["clarification_needed"] = False
             state["clarification_request"] = None
+
+            # summarize the user request using the full chat history
+            summary_prompt = PromptTemplate(
+                input_variables=["user_request", "chat_history"],
+                template=PROMPT_TEMPLATE_SUMMARIZE_REQUEST,
+            ).format(user_request=state["subject"], chat_history=history_str)
+
+            try:
+                summary = llm.invoke(summary_prompt).content.strip()
+                state["subject"] = summary
+            except Exception as e:
+                logger.error("ValidateRequestNode: error summarizing request: %s", e)
         else:
             state["clarification_needed"] = True
             state["clarification_request"] = json_result.get(

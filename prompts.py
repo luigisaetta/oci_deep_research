@@ -88,27 +88,6 @@ Example:
 ```
 """
 
-PROMPT_TEMPLATE_VALIDATE_REQUEST_OLD = """
-You are an assistant that determines if a user request is clear enough to start structured research.
-If the request is specific and clear enough to proceed without further clarification, respond with 'yes'.
-If the request is not clear, respond with 'no'. In this case provide also a request for clarification.
-If it is required what you can do, respond with 'no' and in the request for clarification
-explain that you're an assistant that can help in doing research and creating report based on the results.
-Respond as JSON.
-Enclose the JSON in triple backtics.
-
-Example:
-```json
-{{
-    "decision": "no",
-    "clarification_request": "Please provide more details about the specific aspects of the LangGraph."
-}}
-```
-
-User request:
-{user_input}
-"""
-
 PROMPT_TEMPLATE_VALIDATE_REQUEST = """
 You are an assistant that evaluates whether a user’s request is sufficiently defined to begin structured research.
 
@@ -156,4 +135,17 @@ Chat history:
 
 User request:
 {user_input}
+"""
+
+# prompt to summarize the user request and chat history
+PROMPT_TEMPLATE_SUMMARIZE_REQUEST = """
+You are an assistant that summarizes a conversation into a short subject for a research report.
+
+Chat history:
+{chat_history}
+
+User request:
+{user_request}
+
+Provide the summary in one concise sentence.
 """

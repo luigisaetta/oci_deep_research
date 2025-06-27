@@ -95,6 +95,7 @@ if question := st.chat_input("Hello, how can I help you?"):
 
             # modified to be more responsive, show result asap
             try:
+                # initialize the state with the user question and the chat_history
                 input_state = ReportState(
                     subject=question,
                     chat_history=_chat_history,
@@ -121,12 +122,13 @@ if question := st.chat_input("Hello, how can I help you?"):
 
                         last_state = value
 
+                # here last_state is the state after the last step in the graph
                 if last_state.get("clarification_needed", True):
-                    # if clarification is needed, show the request
+                    # if clarification is needed, show the request from the agent
                     ANSWER = last_state.get("clarification_request", "")
                 else:
-                    # fow now
-                    ANSWER = "Topic is: " + last_state["topic"]
+                    # for now
+                    ANSWER = last_state["subject"]
 
                 with st.chat_message(ASSISTANT):
                     response_container = st.empty()
@@ -137,11 +139,11 @@ if question := st.chat_input("Hello, how can I help you?"):
                 add_to_chat_history(AIMessage(content=ANSWER))
 
             except Exception as e:
-                ERR_MSG = f"Error in Deep Research UI: {e}"
+                ERR_MSG = f"Error1 in Deep Research UI: {e}"
                 logger.error(ERR_MSG)
                 st.error(ERR_MSG)
 
     except Exception as e:
-        ERR_MSG = "Error in Deep Research UI: " + str(e)
+        ERR_MSG = "Error2 in Deep Research UI: " + str(e)
         logger.error(ERR_MSG)
         st.error(ERR_MSG)
