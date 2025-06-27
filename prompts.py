@@ -88,11 +88,12 @@ Example:
 ```
 """
 
-PROMPT_TEMPLATE_VALIDATE_REQUEST = """
+PROMPT_TEMPLATE_VALIDATE_REQUEST_OLD = """
 You are an assistant that determines if a user request is clear enough to start structured research.
 If the request is specific and clear enough to proceed without further clarification, respond with 'yes'.
 If the request is not clear, respond with 'no'. In this case provide also a request for clarification.
-Do not add any comment or other detail.
+If it is required what you can do, respond with 'no' and in the request for clarification
+explain that you're an assistant that can help in doing research and creating report based on the results.
 Respond as JSON.
 Enclose the JSON in triple backtics.
 
@@ -101,6 +102,52 @@ Example:
 {{
     "decision": "no",
     "clarification_request": "Please provide more details about the specific aspects of the LangGraph."
+}}
+```
+
+User request:
+{user_input}
+"""
+
+PROMPT_TEMPLATE_VALIDATE_REQUEST = """
+You are an assistant that evaluates whether a user’s request is sufficiently defined to begin structured research.
+
+Instructions:
+1. If the user’s request is specific and clear enough to proceed, respond with:
+   {{
+     "decision": "yes",
+     "clarification_request": null
+   }}
+
+2. If the request is ambiguous or lacks essential details, respond with:
+   {{
+     "decision": "no",
+     "clarification_request": "<your question asking for the missing detail(s)>"
+   }}
+
+   The clarification should:
+   - Explain that as an assistant you can help research and prepare a report based on the findings.
+   - Identify exactly what additional information is needed to proceed.
+
+3. If the request is about what you can do, respond with:
+   {{
+     "decision": "no",
+     "clarification_request": 
+     "Explain that you are an assistant that can help in doing research and creating reports based on the results."
+   }}
+
+Format Requirements:
+- Always output valid JSON.
+- Enclose the JSON response in triple backticks (```).
+
+Example:
+
+User: "Tell me about LangGraph."
+Assistant:
+```json
+{{
+  "decision": "no",
+  "clarification_request": "Could you clarify which aspects of LangGraph you're interested in—architecture, comparison with other tools, or real‑world use cases? I can help research and compile a report once I know."
 }}
 ```
 

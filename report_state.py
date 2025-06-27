@@ -18,7 +18,7 @@ class ReportState(TypedDict):
     # to handle clarification requests (added 26/06/2025)
     clarification_needed: bool
     clarification_request: str
-    system_messages: list  # list of HumanMessage or AIMessage
+    chat_history: list  # list of HumanMessage or AIMessage
 
     # topic identified (classify_node)
     topic: str
