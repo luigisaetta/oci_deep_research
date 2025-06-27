@@ -151,6 +151,9 @@ Assistant:
 }}
 ```
 
+Chat history:
+{chat_history}
+
 User request:
 {user_input}
 """

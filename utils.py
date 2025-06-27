@@ -68,3 +68,15 @@ def get_console_logger(
         logger.addHandler(handler)
 
     return logger
+
+
+def chat_history_to_str(chat_history: list) -> str:
+    """
+    Return chat history as plain text.
+    """
+    messages = []
+    for msg in chat_history:
+        role = "User" if msg.type == "human" else "Assistant"
+        messages.append(f"{role}: {msg.content}")
+
+    return "\n".join(messages)

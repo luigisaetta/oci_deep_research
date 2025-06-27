@@ -97,6 +97,7 @@ if question := st.chat_input("Hello, how can I help you?"):
             try:
                 input_state = ReportState(
                     subject=question,
+                    chat_history=_chat_history,
                 )
 
                 # set the agent config

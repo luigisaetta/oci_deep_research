@@ -9,7 +9,11 @@ from langchain.prompts import PromptTemplate
 from report_state import ReportState
 from prompts import PROMPT_TEMPLATE_VALIDATE_REQUEST
 from model_factory import get_chat_model
-from utils import get_console_logger, extract_json_from_text
+from utils import (
+    get_console_logger,
+    extract_json_from_text,
+    chat_history_to_str,
+)
 from config import DEBUG
 
 logger = get_console_logger(name="ValidateRequestNode")
@@ -36,9 +40,12 @@ class ValidateRequest(Runnable):
         """
         Check if the user request is clear enough to start structured research.
         """
+        history_str = chat_history_to_str(state.get("chat_history", []))
+
         prompt = PromptTemplate(
-            input_variables=["user_input"], template=PROMPT_TEMPLATE_VALIDATE_REQUEST
-        ).format(user_input=state["subject"])
+            input_variables=["user_input", "chat_history"],
+            template=PROMPT_TEMPLATE_VALIDATE_REQUEST,
+        ).format(user_input=state["subject"], chat_history=history_str)
 
         if DEBUG:
             logger.debug("Validating request: %s", prompt)
