@@ -88,7 +88,7 @@ class ValidateRequest(Runnable):
                 "clarification_request", ""
             )
 
-        if state["clarification_needed"]:
-            logger.info("Clarification needed: %s", state["clarification_request"])
+        if DEBUG and state["clarification_needed"]:
+            logger.debug("Clarification needed: %s", state["clarification_request"])
 
         return state

@@ -90,6 +90,8 @@ Example:
 
 PROMPT_TEMPLATE_VALIDATE_REQUEST = """
 You are an assistant that evaluates whether a user’s request is sufficiently defined to begin structured research.
+The user should also provide information to define the topic and the length of the report.
+Regarding the lenght the report could be: brief, medium, or long/detailed.
 
 Instructions:
 1. If the user’s request is specific and clear enough to proceed, respond with:
@@ -139,7 +141,7 @@ User request:
 
 # prompt to summarize the user request and chat history
 PROMPT_TEMPLATE_SUMMARIZE_REQUEST = """
-You are an assistant that summarizes a conversation into a short subject for a research report.
+You are an assistant that summarizes a conversation into a subject for a research report.
 
 Chat history:
 {chat_history}
@@ -147,5 +149,5 @@ Chat history:
 User request:
 {user_request}
 
-Provide the summary in one concise sentence.
+Provide the summary in one, two concise sentence.
 """
