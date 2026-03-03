@@ -22,9 +22,10 @@ MODEL_ID = "xai.grok-3"
 TEMPERATURE = 0.0
 MAX_TOKENS = 2048
 
-# the model for search on Internet
+# the model for Internet Search
 SEARCH_INFO_MODEL_ID = "openai.gpt-4o-search-preview"
-FINAL_REPORT_MAX_TOKENS = 4000
+
+FINAL_REPORT_MAX_TOKENS = 16000
 
 # URL for local FastAPI
 PORT = 8080

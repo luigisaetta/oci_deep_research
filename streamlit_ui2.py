@@ -8,8 +8,8 @@ import time
 import streamlit as st
 
 from langchain_core.messages import HumanMessage, AIMessage
-from report_state import ReportState
-from workflow2 import create_workflow
+from agent.report_state import ReportState
+from agent.workflow2 import create_workflow
 
 from utils import get_console_logger
 
