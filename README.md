@@ -4,7 +4,7 @@ This repository contains the code for a concept/demo around **Deep Research**, u
 ## Model used
 The demo use:
 * openai.gpt-4o-search-preview, for search
-* xai.grok-3, for all the other tasks
+* openai.gpt-oss-120b, for all the other tasks
 
 ## Implementation
 The agent is implemented using **LangGraph** and OCI Generative AI (integrated with **LangChain 1.x** + `langchain-oci`).
