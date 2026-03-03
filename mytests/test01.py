@@ -4,8 +4,8 @@ Test Agent
 Author: L. Saetta
 """
 
-from report_state import ReportState
-from workflow import create_workflow
+from agent.report_state import ReportState
+from agent.workflow import create_workflow
 
 agent = create_workflow()
 

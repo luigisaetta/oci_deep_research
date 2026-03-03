@@ -1,2 +1,6 @@
 config_private.py
-
+ai23.key
+ai23.key.pub
+.DS_Store
+__pycache__/
+*.py[cod]
