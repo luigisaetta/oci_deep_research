@@ -15,12 +15,11 @@ REGION = "us-chicago-1"
 SERVICE_ENDPOINT = f"https://inference.generativeai.{REGION}.oci.oraclecloud.com"
 
 # this is the default model used
-# MODEL_ID = "meta.llama-3.3-70b-instruct"
-MODEL_ID = "xai.grok-3"
+MODEL_ID = "openai.gpt-oss-120b"
 
 # these are the parameters used for the "non search" model
 TEMPERATURE = 0.0
-MAX_TOKENS = 2048
+MAX_TOKENS = 8000
 
 # the model for Internet Search
 SEARCH_INFO_MODEL_ID = "openai.gpt-4o-search-preview"

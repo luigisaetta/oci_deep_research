@@ -64,9 +64,13 @@ def get_chat_model(
     _provider = normalize_provider(model_id)
 
     if model_id not in MODELS_WITHOUT_KWARGS:
+        # OpenAI models on OCI expect max_completion_tokens.
+        max_tokens_param = (
+            "max_completion_tokens" if model_id.startswith("openai.") else "max_tokens"
+        )
         _model_kwargs = {
             "temperature": temperature,
-            "max_tokens": max_tokens,
+            max_tokens_param: max_tokens,
         }
     else:
         # for some models (OpenAI search) you cannot set those params
